@@ -1,13 +1,10 @@
 # class for configuring the gmetad ganglia server
 # trustedhosts should be a space-separated list of gmetad hosts
 
-class ganglia::gmetad ($clustername, $gridname, $trustedhosts) {
+class ganglia::gmetad ($clustername, $gridname, $trustedhosts, $gmetad_pkgname) {
 
-  $packages = 'ganglia-gmetad'
-
-  package { $packages:
+  package { $pkgname:
     ensure  => installed,
-    require => Yumrepo['epel'],
   }
 
   file { '/etc/ganglia/gmetad.conf':
@@ -16,7 +13,7 @@ class ganglia::gmetad ($clustername, $gridname, $trustedhosts) {
     group   => 'root',
     mode    => '0444',
     content => template('ganglia/gmetad.conf.erb'),
-    require => Package['ganglia-gmetad'],
+    require => Package[$gmetad_pkgname],
     notify  => Service['gmetad'],
   }
 

@@ -1,12 +1,10 @@
 # class for configuring the gmond ganglia client
 
-class ganglia::gmond ($clustername, $headnode) {
+class ganglia::gmond ($clustername, $headnode, $gmond_pkgname) {
 
-  $packages = 'ganglia-gmond'
 
-  package { $packages:
+  package { $gmond_pkgname:
     ensure  => installed,
-    require => Yumrepo['epel'],
   }
 
   file { '/etc/ganglia/gmond.conf':
@@ -15,7 +13,7 @@ class ganglia::gmond ($clustername, $headnode) {
     group   => 'root',
     mode    => '0444',
     content => template('ganglia/gmond.conf.erb'),
-    require => Package['ganglia-gmond'],
+    require => Package[$gmond_pkgname],
     notify  => Service['gmond'],
   }
 
