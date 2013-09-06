@@ -1,6 +1,6 @@
 # class for configuring the gmond ganglia client
 
-class ganglia::gmond ($clustername, $headnode, $gmond_pkgname) {
+class ganglia::gmond ($clustername, $headnode, $ownername, $location, $gmond_pkgname) {
 
 
   package { $gmond_pkgname:
