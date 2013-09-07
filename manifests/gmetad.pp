@@ -3,7 +3,7 @@
 
 class ganglia::gmetad ($clustername, $gridname, $trustedhosts, $gmetad_pkgname) {
 
-  package { $pkgname:
+  package { $gmetad_pkgname:
     ensure  => installed,
   }
 
