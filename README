@@ -1,5 +1,5 @@
 A puppet module for configuring ganglia (http://ganglia.sourceforge.net).
 
-Currently only tested on Fedora.
+Currently only tested on CentOS/Fedora.
 
 Requires EPEL (https://fedoraproject.org/wiki/EPEL) to be installed and configured properly. Left the yumrepo config out here, assuming that you'll be managing yum repositories elsewhere in your puppet codebase.
